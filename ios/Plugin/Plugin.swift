@@ -111,20 +111,20 @@ public class AdMob: CAPPlugin, GADBannerViewDelegate, GADInterstitialDelegate, G
         removeBannerViewToView()
         if let rootViewController = UIApplication.shared.keyWindow?.rootViewController {
             NSLog("AdMob: rendering rootView")
-            var toItem = rootViewController.bottomLayoutGuide
+            var toItem = rootViewController.view.safeAreaLayoutGuide.bottomAnchor
             var adMargin = Int(Margin)!
 
             switch (adPosition) {
             case "TOP_CENTER":
-                toItem = rootViewController.topLayoutGuide
+                toItem = rootViewController.view.safeAreaLayoutGuide.topAnchor
                 break;
             case "CENTER":
                 // todo: position center
-                toItem = rootViewController.bottomLayoutGuide
+                toItem = rootViewController.view.safeAreaLayoutGuide.bottomAnchor
                 adMargin = adMargin * -1
                 break;
             default:
-                toItem = rootViewController.bottomLayoutGuide
+                toItem = rootViewController.view.safeAreaLayoutGuide.bottomAnchor
                 adMargin = adMargin * -1
                 break;
             }
